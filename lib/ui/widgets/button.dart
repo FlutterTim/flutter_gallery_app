@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gallery/theme.dart';
 
 class Button extends StatelessWidget {
   const Button({
@@ -14,6 +15,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
+      style: darkTheme.elevatedButtonTheme.style,
       child: Text(buttonText),
     );
   }

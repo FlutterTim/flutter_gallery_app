@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery/routes.dart';
+import 'package:flutter_gallery/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -13,6 +14,8 @@ class GalleryApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: lightTheme,
+      darkTheme: darkTheme,
       routerConfig: router,
       title: 'Gallery App',
       localizationsDelegates: const [
@@ -25,10 +28,6 @@ class GalleryApp extends StatelessWidget {
         Locale('en'),
         Locale('nl'),
       ],
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
     );
   }
 }

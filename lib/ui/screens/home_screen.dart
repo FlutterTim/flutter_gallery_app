@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Button(
               onPressed: () => context.push(searchScreenRoute),
