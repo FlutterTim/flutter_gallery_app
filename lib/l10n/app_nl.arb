@@ -1,6 +1,19 @@
 {
   "favoritesScreenTitle": "Favoriete afbeeldingen",
   "homeScreenTitle": "Startscherm",
+  "imageDescription": "'{imageName}' is gemaakt door {authorName} en geüpload naar Pexels.",
+  "@imageDescription": {
+    "placeholders": {
+      "imageName": {
+        "type": "String",
+        "example": "Naam van de afbeelding"
+      },
+      "authorName": {
+        "type": "String",
+        "example": "Naam van de auteur van de afbeelding"
+      }
+    }
+  },
   "initialSearchMessage": "Zoek afbeeldingen door in de zoekbalk hierboven te typen, druk daarna op 'Zoeken'",
   "noImagesFound": "Geen afbeeldingen gevonden met die zoekterm",
   "search": "Zoeken",

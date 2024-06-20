@@ -1,6 +1,19 @@
 {
   "favoritesScreenTitle": "Favorite Images",
   "homeScreenTitle": "Home Screen",
+  "imageDescription": "'{imageName}' has been made by {authorName} and uploaded to Pexels.",
+  "@imageDescription": {
+    "placeholders": {
+      "imageName": {
+        "type": "String",
+        "example": "Name of image"
+      },
+      "authorName": {
+        "type": "String",
+        "example": "Name of author of image"
+      }
+    }
+  },
   "initialSearchMessage": "Search images by typing in the searchbar above and press 'Search'",
   "noImagesFound": "No images found with that search term",
   "search": "Search",

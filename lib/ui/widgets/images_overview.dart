@@ -1,6 +1,8 @@
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery/models/image.dart';
+import 'package:flutter_gallery/routes.dart';
+import 'package:go_router/go_router.dart';
 
 class ImagesOverview extends StatelessWidget {
   const ImagesOverview({
@@ -25,18 +27,24 @@ class ImagesOverview extends StatelessWidget {
           crossAxisCount: 2,
           children: <Widget>[
             for (var image in images) ...[
-              Image(
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress != null) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    return child;
-                  }
-                },
-                image: FastCachedImageProvider(
-                  image.url,
+              GestureDetector(
+                onTap: () => context.push(
+                  imageScreenRoute,
+                  extra: image,
+                ),
+                child: Image(
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress != null) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      return child;
+                    }
+                  },
+                  image: FastCachedImageProvider(
+                    image.url,
+                  ),
                 ),
               ),
             ],
