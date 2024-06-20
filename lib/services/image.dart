@@ -13,11 +13,11 @@ final imageServiceProvider = Provider<ImageService>((ref) {
 
 class ImageService {
   Future<SearchResult> fetchImages(String searchTerm,
-      {int pageNumber = 1, int amountOfImagesPerPage = 9}) async {
+      {int pageNumber = 1, int amountOfImagesPerPage = 9, String? url}) async {
     if (amountOfImagesPerPage > 80) amountOfImagesPerPage = 80;
     if (amountOfImagesPerPage < 1) amountOfImagesPerPage = 1;
     var response = await get(
-      Uri.parse(
+      Uri.parse(url ??
           'https://api.pexels.com/v1/search?query=$searchTerm&page=$pageNumber&per_page=$amountOfImagesPerPage&locale=$locale'),
       headers: {
         HttpHeaders.authorizationHeader: dotenv.env['IMAGE_API_KEY']!,

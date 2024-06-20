@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   fast_cached_network_image: ^1.2.9
+  cached_network_image: ^3.3.1
   hooks_riverpod: ^2.5.1
   flutter_hooks: ^0.20.5
   go_router: ^14.2.0

@@ -18,15 +18,25 @@ class ImagesOverview extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          primary: false,
           padding: const EdgeInsets.all(20),
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           crossAxisCount: 2,
           children: <Widget>[
             for (var image in images) ...[
-              FastCachedImage(
-                url: image,
+              Image(
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress != null) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    return child;
+                  }
+                },
+                image: FastCachedImageProvider(
+                  image,
+                ),
               ),
             ],
           ],

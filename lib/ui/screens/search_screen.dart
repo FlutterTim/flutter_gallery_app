@@ -10,6 +10,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class SearchScreen extends HookConsumerWidget {
   const SearchScreen({super.key});
 
+  final iconButtonSize = 48.0;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var localizations = context.localizations;
@@ -52,6 +54,43 @@ class SearchScreen extends HookConsumerWidget {
                 ImagesOverview(
                   images: searchResult.value!.images,
                 ),
+                if (searchResult.value!.nextPage.isNotEmpty) ...[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      searchResult.value!.pageNumber > 1
+                          ? SizedBox(
+                              height: iconButtonSize,
+                              width: iconButtonSize,
+                              child: IconButton(
+                                icon: const Icon(Icons.chevron_left),
+                                onPressed: () async => searchResult.value =
+                                    await imageService.fetchImages(
+                                  searchController.text,
+                                  pageNumber:
+                                      searchResult.value!.pageNumber - 1,
+                                ),
+                              ),
+                            )
+                          : SizedBox(width: iconButtonSize),
+                      Text(
+                        searchResult.value!.pageNumber.toString(),
+                      ),
+                      SizedBox(
+                        height: iconButtonSize,
+                        width: iconButtonSize,
+                        child: IconButton(
+                          icon: const Icon(Icons.chevron_right),
+                          onPressed: () async => searchResult.value =
+                              await imageService.fetchImages(
+                            searchController.text,
+                            url: searchResult.value!.nextPage,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ],
             ] else ...[
               Text(localizations.initialSearchMessage),
