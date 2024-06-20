@@ -1,5 +1,6 @@
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gallery/models/image.dart';
 
 class ImagesOverview extends StatelessWidget {
   const ImagesOverview({
@@ -7,7 +8,7 @@ class ImagesOverview extends StatelessWidget {
     required this.images,
   });
 
-  final List<String> images;
+  final List<ImageModel> images;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class ImagesOverview extends StatelessWidget {
                   }
                 },
                 image: FastCachedImageProvider(
-                  image,
+                  image.url,
                 ),
               ),
             ],

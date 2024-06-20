@@ -1,3 +1,5 @@
+import 'package:flutter_gallery/models/image.dart';
+
 class SearchResult {
   SearchResult({
     required this.images,
@@ -6,7 +8,7 @@ class SearchResult {
     required this.nextPage,
   });
 
-  List<String> images;
+  List<ImageModel> images;
   int pageNumber;
   int amountOfImages;
   String nextPage;
@@ -16,10 +18,9 @@ class SearchResult {
         pageNumber: map['page'],
         amountOfImages: map['total_results'],
         images: map['photos'] != null
-            ? List<String>.from(
+            ? List<ImageModel>.from(
                 (map['photos'] as List<dynamic>).map(
-                  (image) => (image as Map<String, dynamic>)['src']['medium']
-                      as String,
+                  (image) => ImageModel.fromMap(image as Map<String, dynamic>),
                 ),
               )
             : [],
