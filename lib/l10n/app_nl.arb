@@ -1,6 +1,9 @@
 {
   "favoritesScreenTitle": "Favoriete afbeeldingen",
   "homeScreenTitle": "Startscherm",
+  "initialSearchMessage": "Zoek afbeeldingen door in de zoekbalk hierboven te typen, druk daarna op 'Zoeken'",
+  "noImagesFound": "Geen afbeeldingen gevonden met die zoekterm",
+  "search": "Zoeken",
   "searchScreenTitle": "Afbeeldingen zoeken",
   "title": "Gallerij App"
 }

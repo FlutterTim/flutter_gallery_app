@@ -1,6 +1,9 @@
 {
   "favoritesScreenTitle": "Favorite Images",
   "homeScreenTitle": "Home Screen",
+  "initialSearchMessage": "Search images by typing in the searchbar above and press 'Search'",
+  "noImagesFound": "No images found with that search term",
+  "search": "Search",
   "searchScreenTitle": "Search Images",
   "title": "Gallery App"
 }
