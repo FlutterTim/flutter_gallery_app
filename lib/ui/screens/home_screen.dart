@@ -25,6 +25,10 @@ class HomeScreen extends StatelessWidget {
               buttonText: localizations.searchScreenTitle,
             ),
             Button(
+              onPressed: () => context.push(cachedImagesScreenRoute),
+              buttonText: localizations.cachedImagesScreenTitle,
+            ),
+            Button(
               onPressed: () => context.push(favoritesScreenRoute),
               buttonText: localizations.favoritesScreenTitle,
             ),

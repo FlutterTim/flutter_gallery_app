@@ -1,4 +1,5 @@
 {
+  "cachedImagesScreenTitle": "Gecachede afbeeldingen",
   "favoritesScreenTitle": "Favoriete afbeeldingen",
   "homeScreenTitle": "Startscherm",
   "imageDescription": "'{imageName}' is gemaakt door {authorName} en geüpload naar Pexels.",
@@ -15,6 +16,7 @@
     }
   },
   "initialSearchMessage": "Zoek afbeeldingen door in de zoekbalk hierboven te typen, druk daarna op 'Zoeken'",
+  "noCachedImages": "Er zijn nog geen gecachede afbeeldingen",
   "noImagesFound": "Geen afbeeldingen gevonden met die zoekterm",
   "search": "Zoeken",
   "searchScreenTitle": "Afbeeldingen zoeken",
