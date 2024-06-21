@@ -3,15 +3,14 @@ import 'dart:io';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gallery/main.dart';
+import 'package:flutter_gallery/models/image.dart';
 import 'package:flutter_gallery/models/searchresult.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
 
-final imageServiceProvider = Provider<ImageService>((ref) {
-  return ImageService();
-});
+class ImagesNotifier extends StateNotifier<List<ImageModel>> {
+  ImagesNotifier() : super([]);
 
-class ImageService {
   Future<SearchResult> fetchImages(String searchTerm,
       {int pageNumber = 1, int amountOfImagesPerPage = 9, String? url}) async {
     if (amountOfImagesPerPage > 80) amountOfImagesPerPage = 80;
@@ -27,6 +26,38 @@ class ImageService {
 
     var searchResult = SearchResult.fromMap(responseJson);
 
+    for (var image in searchResult.images) {
+      if (!state.contains(image)) {
+        addImage(image);
+      }
+    }
+
     return searchResult;
   }
+
+  void addImage(ImageModel image) {
+    state = [...state, image];
+  }
+
+  void removeImage(String imageUrl) {
+    state = [
+      for (final image in state)
+        if (image.url != imageUrl) image,
+    ];
+  }
+
+  void bookmarkImage(String imageUrl) {
+    state = [
+      for (final image in state)
+        if (image.url == imageUrl)
+          image.copyWith(bookmark: !image.bookmark)
+        else
+          image,
+    ];
+  }
 }
+
+final imagesProvider =
+    StateNotifierProvider<ImagesNotifier, List<ImageModel>>((ref) {
+  return ImagesNotifier();
+});

@@ -16,7 +16,7 @@ class SearchScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var localizations = context.localizations;
     var searchController = useTextEditingController();
-    var imageService = ref.read(imageServiceProvider);
+    var imageNotifier = ref.read(imagesProvider.notifier);
     ValueNotifier<SearchResult?> searchResult = useState(null);
 
     return Scaffold(
@@ -39,7 +39,7 @@ class SearchScreen extends HookConsumerWidget {
                 ),
                 Button(
                   onPressed: () async => searchResult.value =
-                      await imageService.fetchImages(searchController.text),
+                      await imageNotifier.fetchImages(searchController.text),
                   buttonText: localizations.search,
                 )
               ],
@@ -65,7 +65,7 @@ class SearchScreen extends HookConsumerWidget {
                               child: IconButton(
                                 icon: const Icon(Icons.chevron_left),
                                 onPressed: () async => searchResult.value =
-                                    await imageService.fetchImages(
+                                    await imageNotifier.fetchImages(
                                   searchController.text,
                                   pageNumber:
                                       searchResult.value!.pageNumber - 1,
@@ -82,7 +82,7 @@ class SearchScreen extends HookConsumerWidget {
                         child: IconButton(
                           icon: const Icon(Icons.chevron_right),
                           onPressed: () async => searchResult.value =
-                              await imageService.fetchImages(
+                              await imageNotifier.fetchImages(
                             searchController.text,
                             url: searchResult.value!.nextPage,
                           ),
