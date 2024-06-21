@@ -1,12 +1,21 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gallery/main.dart';
 import 'package:flutter_gallery/models/image.dart';
 import 'package:flutter_gallery/models/searchresult.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
+
+final imagesProvider =
+    StateNotifierProvider<ImagesNotifier, List<ImageModel>>((ref) {
+  return ImagesNotifier();
+});
+
+final bookmarkedImagesProvider = StateProvider<List<ImageModel>>((ref) =>
+    ref.watch(imagesProvider).where((image) => image.bookmark).toList());
 
 class ImagesNotifier extends StateNotifier<List<ImageModel>> {
   ImagesNotifier() : super([]);
@@ -44,6 +53,7 @@ class ImagesNotifier extends StateNotifier<List<ImageModel>> {
       for (final image in state)
         if (image.url != imageUrl) image,
     ];
+    FastCachedImageConfig.deleteCachedImage(imageUrl: imageUrl);
   }
 
   void bookmarkImage(String imageUrl) {
@@ -56,8 +66,3 @@ class ImagesNotifier extends StateNotifier<List<ImageModel>> {
     ];
   }
 }
-
-final imagesProvider =
-    StateNotifierProvider<ImagesNotifier, List<ImageModel>>((ref) {
-  return ImagesNotifier();
-});

@@ -17,6 +17,7 @@
   },
   "initialSearchMessage": "Zoek afbeeldingen door in de zoekbalk hierboven te typen, druk daarna op 'Zoeken'",
   "noCachedImages": "Er zijn nog geen gecachede afbeeldingen",
+  "noFavoriteImages": "Je hebt nog geen favoriete afbeeldingen",
   "noImagesFound": "Geen afbeeldingen gevonden met die zoekterm",
   "search": "Zoeken",
   "searchScreenTitle": "Afbeeldingen zoeken",

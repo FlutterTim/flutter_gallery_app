@@ -17,6 +17,7 @@
   },
   "initialSearchMessage": "Search images by typing in the searchbar above and press 'Search'",
   "noCachedImages": "There are no cached images yet",
+  "noFavoriteImages": "You don't have any favorite images yet",
   "noImagesFound": "No images found with that search term",
   "search": "Search",
   "searchScreenTitle": "Search Images",

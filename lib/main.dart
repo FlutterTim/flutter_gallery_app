@@ -27,6 +27,7 @@ Future main() async {
       days: 1,
     ),
   );
+  FastCachedImageConfig.clearAllCachedImages();
   runApp(
     const ProviderScope(
       child: GalleryApp(),

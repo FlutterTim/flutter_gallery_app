@@ -16,7 +16,7 @@ class SearchScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var localizations = context.localizations;
     var searchController = useTextEditingController();
-    var imageNotifier = ref.read(imagesProvider.notifier);
+    var imageNotifier = ref.watch(imagesProvider.notifier);
     ValueNotifier<SearchResult?> searchResult = useState(null);
 
     return Scaffold(
