@@ -19,6 +19,7 @@ class SearchScreen extends HookConsumerWidget {
     var imagesProviderNotifier = ref.watch(imagesProvider.notifier);
     // TODO: replace this valuenotifier with the corresponding values from the imagesprovider.
     ValueNotifier<SearchResult?> searchResult = useState(null);
+    final FocusNode textFieldFocusNode = FocusNode();
 
     return Scaffold(
       appBar: AppBar(
@@ -36,13 +37,15 @@ class SearchScreen extends HookConsumerWidget {
                 Expanded(
                   child: TextField(
                     controller: searchController,
+                    focusNode: textFieldFocusNode,
                   ),
                 ),
-                // TODO: Pressing this button should close the keyboard.
                 Button(
-                  onPressed: () async => searchResult.value =
-                      await imagesProviderNotifier
-                          .fetchImages(searchController.text),
+                  onPressed: () async {
+                    textFieldFocusNode.unfocus();
+                    return searchResult.value = await imagesProviderNotifier
+                        .fetchImages(searchController.text);
+                  },
                   buttonText: localizations.search,
                 )
               ],
