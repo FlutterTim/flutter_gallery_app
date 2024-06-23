@@ -15,11 +15,25 @@
       }
     }
   },
-  "initialSearchMessage": "Search images by typing in the searchbar above and press 'Search'",
+  "initialSearchMessage": "Search images by typing in the searchbar above and press 'Search'. Every image you see on this screen will be automatically cached.",
+  "no": "No",
   "noCachedImages": "There are no cached images yet",
   "noFavoriteImages": "You don't have any favorite images yet",
   "noImagesFound": "No images found with that search term",
+  "removeAllImagesDescription": "Are you sure you want to remove all of the cached images?",
+  "removeAllImagesTitle": "Remove all cached images",
+  "removeImageDescription": "Are you sure you want to remove the image with the name '{imageName}'?",
+  "@removeImageDescription": {
+    "placeholders": {
+      "imageName": {
+        "type": "String",
+        "example": "Name of the image"
+      }
+    }
+  },
+  "removeImageTitle": "Remove image",
   "search": "Search",
   "searchScreenTitle": "Search Images",
-  "title": "Gallery App"
+  "title": "Gallery App",
+  "yes": "Yes"
 }

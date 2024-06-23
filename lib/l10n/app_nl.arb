@@ -15,11 +15,25 @@
       }
     }
   },
-  "initialSearchMessage": "Zoek afbeeldingen door in de zoekbalk hierboven te typen, druk daarna op 'Zoeken'",
+  "initialSearchMessage": "Zoek afbeeldingen door in de zoekbalk hierboven te typen, druk daarna op 'Zoeken'. Alle afbeeldingen die je ziet op deze pagina zullen automatisch gecached worden.",
+  "no": "Nee",
   "noCachedImages": "Er zijn nog geen gecachede afbeeldingen",
   "noFavoriteImages": "Je hebt nog geen favoriete afbeeldingen",
   "noImagesFound": "Geen afbeeldingen gevonden met die zoekterm",
+  "removeAllImagesDescription": "Weet je zeker dat je alle gecachede afbeeldingen wilt verwijderen?",
+  "removeAllImagesTitle": "Alle gecachede afbeeldingen verwijderen",
+  "removeImageDescription": "Weet je zeker dat je de afbeelding met de naam '{imageName}' wilt verwijderen?",
+  "@removeImageDescription": {
+    "placeholders": {
+      "imageName": {
+        "type": "String",
+        "example": "Naam van de afbeelding"
+      }
+    }
+  },
+  "removeImageTitle": "Afbeelding verwijderen",
   "search": "Zoeken",
   "searchScreenTitle": "Afbeeldingen zoeken",
-  "title": "Gallerij App"
+  "title": "Gallerij App",
+  "yes": "Ja"
 }

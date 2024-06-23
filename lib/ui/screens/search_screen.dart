@@ -16,7 +16,8 @@ class SearchScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var localizations = context.localizations;
     var searchController = useTextEditingController();
-    var imageNotifier = ref.watch(imagesProvider.notifier);
+    var imagesProviderNotifier = ref.watch(imagesProvider.notifier);
+    // TODO: replace this valuenotifier with the corresponding values from the imagesprovider.
     ValueNotifier<SearchResult?> searchResult = useState(null);
 
     return Scaffold(
@@ -37,9 +38,11 @@ class SearchScreen extends HookConsumerWidget {
                     controller: searchController,
                   ),
                 ),
+                // TODO: Pressing this button should close the keyboard.
                 Button(
                   onPressed: () async => searchResult.value =
-                      await imageNotifier.fetchImages(searchController.text),
+                      await imagesProviderNotifier
+                          .fetchImages(searchController.text),
                   buttonText: localizations.search,
                 )
               ],
@@ -53,6 +56,7 @@ class SearchScreen extends HookConsumerWidget {
               ] else ...[
                 ImagesOverview(
                   images: searchResult.value!.images,
+                  notifier: imagesProviderNotifier,
                 ),
                 if (searchResult.value!.nextPage.isNotEmpty) ...[
                   Row(
@@ -65,7 +69,7 @@ class SearchScreen extends HookConsumerWidget {
                               child: IconButton(
                                 icon: const Icon(Icons.chevron_left),
                                 onPressed: () async => searchResult.value =
-                                    await imageNotifier.fetchImages(
+                                    await imagesProviderNotifier.fetchImages(
                                   searchController.text,
                                   pageNumber:
                                       searchResult.value!.pageNumber - 1,
@@ -82,7 +86,7 @@ class SearchScreen extends HookConsumerWidget {
                         child: IconButton(
                           icon: const Icon(Icons.chevron_right),
                           onPressed: () async => searchResult.value =
-                              await imageNotifier.fetchImages(
+                              await imagesProviderNotifier.fetchImages(
                             searchController.text,
                             url: searchResult.value!.nextPage,
                           ),

@@ -48,12 +48,17 @@ class ImagesNotifier extends StateNotifier<List<ImageModel>> {
     state = [...state, image];
   }
 
-  void removeImage(String imageUrl) {
+  Future<void> removeAllImages() async {
+    state = [];
+    await FastCachedImageConfig.clearAllCachedImages(showLog: true);
+  }
+
+  Future<void> removeImage(String imageUrl) async {
     state = [
       for (final image in state)
         if (image.url != imageUrl) image,
     ];
-    FastCachedImageConfig.deleteCachedImage(imageUrl: imageUrl);
+    await FastCachedImageConfig.deleteCachedImage(imageUrl: imageUrl);
   }
 
   void bookmarkImage(String imageUrl) {
