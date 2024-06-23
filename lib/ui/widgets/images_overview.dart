@@ -13,10 +13,12 @@ class ImagesOverview extends ConsumerWidget {
     super.key,
     required this.images,
     this.notifier,
+    this.isSearchScreen = false,
   });
 
   final List<ImageModel> images;
   final ImagesNotifier? notifier;
+  final bool isSearchScreen;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,67 +26,65 @@ class ImagesOverview extends ConsumerWidget {
     ImagesNotifier imagesProviderNotifier =
         notifier ?? ref.watch(imagesProvider.notifier);
 
-    return SizedBox(
-      height: 500,
-      child: SingleChildScrollView(
-        child: GridView.count(
-          physics: const NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: <Widget>[
-            for (var image in images) ...[
-              GestureDetector(
-                onTap: () => context.push(
-                  imageScreenRoute,
-                  extra: image,
-                ),
-                onLongPress: () => showDialog(
-                  context: context,
-                  builder: (context) => GalleryAlertDialog(
-                    title: localizations.removeImageTitle,
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          localizations.removeImageDescription(image.name),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        FastCachedImage(url: image.url),
-                      ],
+    return GridView.count(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+      crossAxisCount: 2,
+      children: <Widget>[
+        for (var image in images) ...[
+          GestureDetector(
+            onTap: () => !isSearchScreen
+                ? context.push(
+                    imageScreenRoute,
+                    extra: image,
+                  )
+                : null,
+            onLongPress: () => !isSearchScreen
+                ? showDialog(
+                    context: context,
+                    builder: (context) => GalleryAlertDialog(
+                      title: localizations.removeImageTitle,
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            localizations.removeImageDescription(image.name),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          FastCachedImage(url: image.url),
+                        ],
+                      ),
+                      onConfirm: () async {
+                        await imagesProviderNotifier.removeImage(image.url);
+                        if (context.mounted) {
+                          context.pop();
+                        }
+                      },
                     ),
-                    onConfirm: () async {
-                      await imagesProviderNotifier.removeImage(image.url);
-                      if (context.mounted) {
-                        context.pop();
-                      }
-                    },
-                  ),
-                ),
-                child: Image(
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress != null) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    } else {
-                      return child;
-                    }
-                  },
-                  image: FastCachedImageProvider(
-                    image.url,
-                  ),
-                ),
+                  )
+                : null,
+            child: Image(
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress != null) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return child;
+                }
+              },
+              image: FastCachedImageProvider(
+                image.url,
               ),
-            ],
-          ],
-        ),
-      ),
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

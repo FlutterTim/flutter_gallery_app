@@ -44,20 +44,15 @@ class CachedImagesScreen extends ConsumerWidget {
               ]
             : null,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            images.isNotEmpty
-                ? ImagesOverview(
-                    images: images,
-                  )
-                : Text(
-                    localizations.noCachedImages,
-                  ),
-          ],
-        ),
-      ),
+      body: images.isNotEmpty
+          ? ImagesOverview(
+              images: images,
+            )
+          : Center(
+              child: Text(
+                localizations.noCachedImages,
+              ),
+            ),
     );
   }
 }

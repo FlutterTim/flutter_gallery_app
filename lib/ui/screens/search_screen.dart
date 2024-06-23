@@ -57,9 +57,12 @@ class SearchScreen extends HookConsumerWidget {
               if (searchResult.value!.amountOfImages == 0) ...[
                 Text(localizations.noImagesFound),
               ] else ...[
-                ImagesOverview(
-                  images: searchResult.value!.images,
-                  notifier: imagesProviderNotifier,
+                Expanded(
+                  child: ImagesOverview(
+                    images: searchResult.value!.images,
+                    notifier: imagesProviderNotifier,
+                    isSearchScreen: true,
+                  ),
                 ),
                 if (searchResult.value!.nextPage.isNotEmpty) ...[
                   Row(

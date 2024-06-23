@@ -18,20 +18,15 @@ class FavoritesScreen extends ConsumerWidget {
           localizations.favoritesScreenTitle,
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            images.isNotEmpty
-                ? ImagesOverview(
-                    images: images,
-                  )
-                : Text(
-                    localizations.noFavoriteImages,
-                  ),
-          ],
-        ),
-      ),
+      body: images.isNotEmpty
+          ? ImagesOverview(
+              images: images,
+            )
+          : Center(
+              child: Text(
+                localizations.noFavoriteImages,
+              ),
+            ),
     );
   }
 }
