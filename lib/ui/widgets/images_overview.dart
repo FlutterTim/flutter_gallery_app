@@ -8,17 +8,22 @@ import 'package:flutter_gallery/utilities/localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+/// [ImagesOverview] provides a [GridView] with all the images in the required
+/// [images] list. You can provide an option [notifier] which is a
+/// [ImagesNotifier] if you use one in your screen or other widget already
+/// There is also a [allowInteraction] boolean that you can use to stop the
+/// images from being interactable so you can't delete/view them.
 class ImagesOverview extends ConsumerWidget {
   const ImagesOverview({
     super.key,
     required this.images,
     this.notifier,
-    this.isSearchScreen = false,
+    this.allowInteraction = true,
   });
 
   final List<ImageModel> images;
   final ImagesNotifier? notifier;
-  final bool isSearchScreen;
+  final bool allowInteraction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,13 +41,13 @@ class ImagesOverview extends ConsumerWidget {
       children: <Widget>[
         for (var image in images) ...[
           GestureDetector(
-            onTap: () => !isSearchScreen
+            onTap: () => allowInteraction
                 ? context.push(
                     imageScreenRoute,
                     extra: image,
                   )
                 : null,
-            onLongPress: () => !isSearchScreen
+            onLongPress: () => allowInteraction
                 ? showDialog(
                     context: context,
                     builder: (context) => GalleryAlertDialog(

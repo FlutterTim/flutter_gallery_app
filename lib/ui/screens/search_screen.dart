@@ -61,7 +61,7 @@ class SearchScreen extends HookConsumerWidget {
                   child: ImagesOverview(
                     images: searchResult.value!.images,
                     notifier: imagesProviderNotifier,
-                    isSearchScreen: true,
+                    allowInteraction: false,
                   ),
                 ),
                 if (searchResult.value!.nextPage.isNotEmpty) ...[

@@ -1,3 +1,9 @@
+/// [ImageModel] is a Model that contains the image information.
+/// Required parameters are [url] which is a [String] and is the url of the
+/// image, [name] which is a [String] and is the name of the images,
+/// [author] which is a [String] and the name of the author of the picture.
+/// The optional parameter is [bookmark] which is a [bool] that can be used to
+/// bookmark an image, it's default is [false].
 class ImageModel extends Object {
   ImageModel({
     required this.url,
@@ -11,6 +17,8 @@ class ImageModel extends Object {
   String author;
   bool bookmark;
 
+  /// [fromMap] uses the [map] to make a [ImageModel] object
+  /// based on the values in the [map].
   factory ImageModel.fromMap(Map<String, dynamic> map) {
     return ImageModel(
       url: map['src']['medium'],
@@ -19,6 +27,9 @@ class ImageModel extends Object {
     );
   }
 
+  /// [copyWith] uses the optional [url], [name], [author] and [bookmark]
+  /// parameters to make a new [ImageModel] object. When a parameter is not
+  /// provided it will use the existing value in the model
   ImageModel copyWith({
     String? url,
     String? name,
@@ -33,6 +44,9 @@ class ImageModel extends Object {
     );
   }
 
+  /// Overriding the [==] function is neccesary to be able to compare two
+  /// [ImageModel] objects without the value of [bookmark] which does not make
+  /// a difference when checking.
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -47,6 +61,8 @@ class ImageModel extends Object {
         other.author == author;
   }
 
+  /// Overriding the [hashCode] function was neccesary to override the [==]
+  /// function.
   @override
   int get hashCode => Object.hash(
         url,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// [ThemeData] for the [lightTheme] of the app.
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
@@ -17,6 +18,7 @@ ThemeData lightTheme = ThemeData(
   ),
 );
 
+/// [ThemeData] for the [darkTheme] of the app.
 ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,

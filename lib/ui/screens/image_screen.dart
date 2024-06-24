@@ -6,6 +6,9 @@ import 'package:flutter_gallery/utilities/localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+/// The [ImageScreen] shows the [image] in more detail. It also shows the
+/// name of the image and who made the image. You can also bookmark an image
+/// here.
 class ImageScreen extends HookConsumerWidget {
   const ImageScreen({
     super.key,

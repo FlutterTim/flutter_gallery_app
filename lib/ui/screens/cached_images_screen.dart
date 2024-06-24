@@ -7,6 +7,8 @@ import 'package:flutter_gallery/utilities/localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+/// The [CachedImagesScreen] shows an [ImagesOverview] of all the cached images
+/// You can also delete all images from the cache here.
 class CachedImagesScreen extends ConsumerWidget {
   const CachedImagesScreen({super.key});
 

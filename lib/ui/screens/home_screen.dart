@@ -4,6 +4,8 @@ import 'package:flutter_gallery/ui/widgets/button.dart';
 import 'package:flutter_gallery/utilities/localizations.dart';
 import 'package:go_router/go_router.dart';
 
+/// The [HomeScreen] shows the buttons to go to the other screens, these are:
+/// the [CachedImagesScreen], the [FavoritesScreen] and the [SearchScreen]
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 

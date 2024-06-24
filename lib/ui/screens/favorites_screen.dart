@@ -5,6 +5,7 @@ import 'package:flutter_gallery/ui/widgets/images_overview.dart';
 import 'package:flutter_gallery/utilities/localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+/// The [FavoritesScreen] shows an [ImagesOverview] of all the bookmarked images
 class FavoritesScreen extends ConsumerWidget {
   const FavoritesScreen({super.key});
 

@@ -1,5 +1,9 @@
 import 'package:flutter_gallery/models/image.dart';
 
+/// [SearchResult] is a model that contains a list of [images]
+/// which are of the type [ImageModel], a [pageNumber] which is an [int],
+/// [amountOfImages] which is an [int] and the [nextPage] url which is
+/// a [String]
 class SearchResult {
   SearchResult({
     required this.images,
@@ -13,6 +17,8 @@ class SearchResult {
   int amountOfImages;
   String nextPage;
 
+  /// [fromMap] uses the [map] to make a [SearchResult] object
+  /// based on the values in the [map].
   factory SearchResult.fromMap(Map<String, dynamic> map) {
     return SearchResult(
         pageNumber: map['page'],
