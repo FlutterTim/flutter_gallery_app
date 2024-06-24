@@ -2,7 +2,7 @@
 
 Flutter Gallery App is an app that you can use to search for images. All images you load will be cached so they can be displayed again later quicker.
 
-**insert gif here**
+https://github.com/FlutterTim/flutter_gallery_app/blob/v1.0.0/gallery%20app.gif
 
 ## Features
 - Search images
