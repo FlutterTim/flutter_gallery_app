@@ -27,7 +27,7 @@ You can call these functions by watching or reading the `imageProvidder.notifier
 
 | Function Name | Return DataType | Parameters | Description |
 |-|-|-|-|
-| fetchImages | Future<SearchResult> | Required: String searchTerm \n Optional: int pageNumber, int amountOfImagesPerPage, String? url | Fetches the images, you can give it an URL or parameters that will be used with the declared URL. |
+| fetchImages | Future<SearchResult> | Required: String searchTerm\ Optional: int pageNumber, int amountOfImagesPerPage, String? url | Fetches the images, you can give it an URL or parameters that will be used with the declared URL. |
 | addImage | void | ImageModel image | Adds the image to the state. |
 | removeAllImages | Future<void> | None | Removes all images from the cache and the state. |
 | removeImage | Future<void> | String imageUrl | Removes the image with the given image URL from the cache and the state. |
