@@ -26,6 +26,7 @@ Seeing as this application does not really have an API I will specify the ImageN
 You can call these functions by watching or reading the `imageProvidder.notifier`.
 
 | Function Name | Return DataType | Parameters | Description |
+|-|-|-|-|
 | fetchImages | Future<SearchResult> | Required: String searchTerm \n Optional: int pageNumber, int amountOfImagesPerPage, String? url | Fetches the images, you can give it an URL or parameters that will be used with the declared URL. |
 | addImage | void | ImageModel image | Adds the image to the state. |
 | removeAllImages | Future<void> | None | Removes all images from the cache and the state. |
