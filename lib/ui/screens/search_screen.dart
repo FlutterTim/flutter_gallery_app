@@ -64,7 +64,7 @@ class SearchScreen extends HookConsumerWidget {
                     allowInteraction: false,
                   ),
                 ),
-                if (searchResult.value!.nextPage.isNotEmpty) ...[
+                if (searchResult.value != null) ...[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -86,18 +86,21 @@ class SearchScreen extends HookConsumerWidget {
                       Text(
                         searchResult.value!.pageNumber.toString(),
                       ),
-                      SizedBox(
-                        height: iconButtonSize,
-                        width: iconButtonSize,
-                        child: IconButton(
-                          icon: const Icon(Icons.chevron_right),
-                          onPressed: () async => searchResult.value =
-                              await imagesProviderNotifier.fetchImages(
-                            searchController.text,
-                            url: searchResult.value!.nextPage,
-                          ),
-                        ),
-                      ),
+                      searchResult.value!.nextPage.isNotEmpty
+                          ? SizedBox(
+                              height: iconButtonSize,
+                              width: iconButtonSize,
+                              child: IconButton(
+                                icon: const Icon(Icons.chevron_right),
+                                onPressed: () async => searchResult.value =
+                                    await imagesProviderNotifier.fetchImages(
+                                  searchController.text,
+                                  pageNumber:
+                                      searchResult.value!.pageNumber + 1,
+                                ),
+                              ),
+                            )
+                          : SizedBox(width: iconButtonSize),
                     ],
                   ),
                 ],

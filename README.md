@@ -17,7 +17,6 @@ Flutter Gallery App is an app that you can use to search for images. All images 
 - Images are currently immediately cached, in the future it should be possible to select an image and then decide if you want to cache it or not.
 - The code supports changes to how many images are loaded in when searching, but there is currently no UI to support that feature.
 - In the future some filters can be added, the image API (Pexels) supports the image color and the orientation of the image.
-- An improvement can be made to the `fetchImages` function as it currently requires a `searchTerm` but is unneccesary when you use an `url`. Also when you give it an URL that's not from Pexels the application will break, to fix that I will remove the `url` parameter in the future and strip the neccesary parameters from the url to use them seperately.
 - The `Button` object does not really do anything special at this moment and will be more advanced in the future.
 
 ## 'API' reference
@@ -27,7 +26,7 @@ You can call these functions by watching or reading the `imageProvidder.notifier
 
 | Function Name | Return DataType | Parameters | Description |
 |-|-|-|-|
-| fetchImages | Future<SearchResult> | Required: String searchTerm<br> Optional: int pageNumber, int amountOfImagesPerPage, String? url | Fetches the images, you can give it an URL or parameters that will be used with the declared URL. |
+| fetchImages | Future<SearchResult> | Required: String searchTerm<br> Optional: int pageNumber, int amountOfImagesPerPage | Fetches the images with a predefined URL and the given parameters |
 | addImage | void | ImageModel image | Adds the image to the state. |
 | removeAllImages | Future<void> | None | Removes all images from the cache and the state. |
 | removeImage | Future<void> | String imageUrl | Removes the image with the given image URL from the cache and the state. |

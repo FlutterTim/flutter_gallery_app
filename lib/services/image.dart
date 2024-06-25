@@ -35,16 +35,18 @@ class ImagesNotifier extends StateNotifier<List<ImageModel>> {
   /// To search for images a [searchTerm] is required. If you want
   /// more or less images on a page you can use the [amountOfImagesPerPage]
   /// parameter to specify how many you want. If you want to see a specific
-  /// page you can use the [pageNumber] parameter, and last but not least, you
-  /// can use the [url] parameter to provide an URL that can be used to fetch
-  /// from. It returns a [Future] of a [SearchResult] object when it's done
+  /// page you can use the [pageNumber] parameter.
+  /// It returns a [Future] of a [SearchResult] object when it's done
   /// fetching.
-  Future<SearchResult> fetchImages(String searchTerm,
-      {int pageNumber = 1, int amountOfImagesPerPage = 9, String? url}) async {
+  Future<SearchResult> fetchImages(
+    String searchTerm, {
+    int pageNumber = 1,
+    int amountOfImagesPerPage = 9,
+  }) async {
     if (amountOfImagesPerPage > 80) amountOfImagesPerPage = 80;
     if (amountOfImagesPerPage < 1) amountOfImagesPerPage = 1;
     var response = await get(
-      Uri.parse(url ??
+      Uri.parse(
           'https://api.pexels.com/v1/search?query=$searchTerm&page=$pageNumber&per_page=$amountOfImagesPerPage&locale=$locale'),
       headers: {
         HttpHeaders.authorizationHeader: dotenv.env['IMAGE_API_KEY']!,
