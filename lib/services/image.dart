@@ -49,7 +49,7 @@ class ImagesNotifier extends StateNotifier<List<ImageModel>> {
       Uri.parse(
           'https://api.pexels.com/v1/search?query=$searchTerm&page=$pageNumber&per_page=$amountOfImagesPerPage&locale=$locale'),
       headers: {
-        HttpHeaders.authorizationHeader: dotenv.env['IMAGE_API_KEY']!,
+        HttpHeaders.authorizationHeader: dotenv.env['PEXELS_API_KEY']!,
       },
     );
     var responseJson = jsonDecode(response.body) as Map<String, dynamic>;
