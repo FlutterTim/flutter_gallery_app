@@ -86,7 +86,7 @@ class SearchScreen extends HookConsumerWidget {
                       Text(
                         searchResult.value!.pageNumber.toString(),
                       ),
-                      searchResult.value!.nextPage.isNotEmpty
+                      searchResult.value!.nextPage != null
                           ? SizedBox(
                               height: iconButtonSize,
                               width: iconButtonSize,
