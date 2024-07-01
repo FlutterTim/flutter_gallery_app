@@ -11,6 +11,9 @@ Flutter Gallery App is an app that you can use to search for images. All images 
 - An overview of all bookmarked images
 - An overview of all the cached images and a way to remove them all or only one from the cache
 
+## Installation
+To be able to build and test the application you need a .env file. There is a .env-example file you can copy and rename to use. To make it work you need to enter a Pexels API Key in the .env. You can read about how to get an API Key [here](https://help.pexels.com/hc/en-us/articles/900004904026-How-do-I-get-an-API-key).
+
 ## Current limitations/Future improvements
 - Bookmarking/deleting/viewing the image on the search page is currently not possible, only on the other screens. I am still thinking about solutions for that.
 - Adding unit tests for the imagenotifier which has the add/delete functionalities.
